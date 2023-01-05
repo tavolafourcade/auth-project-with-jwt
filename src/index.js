@@ -1,6 +1,5 @@
+import app from './app.js'
 
-import express from 'express'
+app.listen(4000)
 
-const app = express()
-app.listen(3000)
-console.log('Server listen on port', 3000)
+console.log('Server listen on port', 4000)
