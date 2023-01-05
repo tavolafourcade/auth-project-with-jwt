@@ -1,7 +1,7 @@
 {
   "name": "auth-project-with-jwt",
   "version": "1.0.0",
-  "description": "",
+  "description": "a REST API",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/tavolafourcade/auth-project-with-jwt.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Octavio Lafourcade",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tavolafourcade/auth-project-with-jwt/issues"
