@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import fs from 'fs'
+import productsRoutes from './routes/products.routes.js'
 
 const pkg = JSON.parse(fs.readFileSync('/Users/octaviolafourcade/Documents/PROYECTOS_PERSONAL/auth-project-with-jwt/package.json', 'utf8'))
 
@@ -19,5 +20,7 @@ app.get('/', (req,res) => {
     version: app.get('pkg').version
   })
 })
+
+app.use('/products', productsRoutes) // Especifico que todas las rutas de productsRoutes van a empezar con /products
 
 export default app
