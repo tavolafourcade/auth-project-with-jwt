@@ -9,6 +9,8 @@ const app = express()
 
 app.set('pkg', pkg) // Sirve para colocarle un nombre a una variable y un valor
 
+app.use(express.json()) // Para que entienda los objetos JSON que llegan al servidor
+
 app.use(morgan('dev'))
 
 // Routes
