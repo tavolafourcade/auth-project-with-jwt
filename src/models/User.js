@@ -34,6 +34,8 @@ userSchema.statics.encryptPassword = async (password) => {
 
 // Comparando la contraseña cifrada con la contraseña que se recibe
 userSchema.statics.comparePassword = async (password, receivedPassword) => {
-  await bcrypt.compare(password, receivedPassword) // Si las contraseñas coinciden retorna un true
+  const comparison = await bcrypt.compare(password, receivedPassword) // Si las contraseñas coinciden retorna un true
+
+  return comparison
 }
 export default model('User', userSchema)
