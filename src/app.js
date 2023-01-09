@@ -3,6 +3,8 @@ import morgan from 'morgan'
 import fs from 'fs'
 import productsRoutes from './routes/products.routes.js'
 import authRoutes from './routes/auth.routes.js'
+import userRoutes from './routes/user.routes.js'
+
 import { createRoles } from './libs/initialSetup.js'
 
 const pkg = JSON.parse(fs.readFileSync('/Users/octaviolafourcade/Documents/PROYECTOS_PERSONAL/auth-project-with-jwt/package.json', 'utf8'))
@@ -28,5 +30,6 @@ app.get('/', (req,res) => {
 
 app.use('/api/products', productsRoutes) // Especifico que todas las rutas de productsRoutes van a empezar con /products
 app.use('/api/auth', authRoutes)
+app.use('/api/user', userRoutes)
 
 export default app
