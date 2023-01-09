@@ -4,6 +4,7 @@ import Role from '../models/Role.js'
 import jwt from 'jsonwebtoken'
 import config from '../config.js'
 
+// Registro
 export const signUp = async (req, res) => {
   const {username, email, password, roles} = req.body
 
@@ -37,7 +38,20 @@ export const signUp = async (req, res) => {
   // console.log({newUser})
   res.status(200).json({token})
 }
+
+// Login
 export const signIn = async (req, res) => {
-  res.json('signin')
+  const userFound = await User.findOne({email: req.body.email}).populate("roles")
+  console.log({userFound})
+  if (!userFound) return res.status(400).json({message: 'User not found'})
+
+  const matchPassword = await User.comparePassword(req.body.password, userFound.password) // Compara la contraseña recibida con la guardada para el usuario específico y retorna true
+  if (!matchPassword) return res.status(401).json({token: null, message: 'Invalid password'})
+  
+  const token = jwt.sign({id: userFound._id}, config.SECRET, {
+    expiresIn: 86400 // 24 horas
+  })
+
+  res.json({token})
 
 }
